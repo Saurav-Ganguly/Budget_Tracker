@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
             //generate primary secordary colors
             seedColor: const Color.fromARGB(255, 31, 147, 248),
             primary: const Color.fromARGB(255, 31, 147, 248),
-            onBackground: const Color(0XFF00CAAC)),
+            onBackground: const Color(0XFF00CAAC),
+            onError: const Color(0XFFF8A69C)),
         inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(
             fontWeight: FontWeight.bold,

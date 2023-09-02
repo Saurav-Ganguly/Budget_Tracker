@@ -14,7 +14,9 @@ class DashboardCategoryTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Chip(
       side: BorderSide(
-        color: isActive ? Colors.white : Colors.black,
+        color: isActive
+            ? Theme.of(context).primaryColor.withAlpha(200)
+            : Colors.black,
       ),
       backgroundColor: isActive
           ? Theme.of(context).colorScheme.primary.withAlpha(200)
