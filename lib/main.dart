@@ -19,11 +19,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          tertiary: const Color.fromARGB(255, 63, 192, 177),
-          //generate primary secordary colors
-          seedColor: const Color.fromARGB(255, 31, 147, 248),
-          primary: const Color.fromARGB(255, 31, 147, 248),
-        ),
+            background: const Color(0XFFF8F8F8),
+            tertiary: const Color.fromARGB(255, 63, 192, 177),
+            //generate primary secordary colors
+            seedColor: const Color.fromARGB(255, 31, 147, 248),
+            primary: const Color.fromARGB(255, 31, 147, 248),
+            onBackground: const Color(0XFF00CAAC)),
         inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(
             fontWeight: FontWeight.bold,
@@ -40,26 +41,14 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 22,
           ),
+          bodyLarge: const TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
           bodySmall: const TextStyle(
             fontSize: 16,
           ),
         ),
-        //const TextTheme(
-        // titleLarge: TextStyle(
-
-        //   fontWeight: FontWeight.bold,
-        //   fontSize: 35,
-        // ),
-        // titleMedium: TextStyle(
-        //   fontWeight: FontWeight.bold,
-        //   fontSize: 20,
-        // ),
-        // bodySmall: TextStyle(
-        //   fontWeight: FontWeight.bold,
-        //   fontSize: 16,
-        // ),
-
-        //),
         useMaterial3: true,
       ),
       home: const Dashboard(),

@@ -55,10 +55,10 @@ class DashboardMainCard extends StatelessWidget {
                           color: Colors.white,
                         ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  const SingleChildScrollView(
+                  SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,7 +70,7 @@ class DashboardMainCard extends StatelessWidget {
                         ),
                         DashboardMainCardDataChips(
                           icon: LineIcons.piggyBank,
-                          label: 'Saving',
+                          label: 'Savings',
                           amount: '20,000',
                         ),
                         DashboardMainCardDataChips(
@@ -81,7 +81,7 @@ class DashboardMainCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(

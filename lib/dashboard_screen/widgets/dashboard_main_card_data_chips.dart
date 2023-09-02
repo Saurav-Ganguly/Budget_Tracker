@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class DashboardMainCardDataChips extends StatelessWidget {
   final IconData icon;
   final String label;
-  final String amount;
-  const DashboardMainCardDataChips({
+  String? amount;
+  DashboardMainCardDataChips({
     super.key,
     required this.icon,
     required this.label,
-    required this.amount,
+    this.amount,
   });
 
   @override
@@ -33,12 +33,14 @@ class DashboardMainCardDataChips extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                   ),
             ),
-            Text(
-              amount,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-            ),
+            amount != null
+                ? Text(
+                    amount!,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                  )
+                : Container(),
           ],
         ),
       ),
