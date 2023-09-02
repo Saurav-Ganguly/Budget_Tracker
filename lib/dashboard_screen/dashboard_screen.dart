@@ -10,6 +10,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  final categories = ['Expenses', 'Savings', 'Goals'];
+  String selectedCategory = 'Expenses';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,20 +46,38 @@ class _DashboardState extends State<Dashboard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    DashboardCategoryTab(
-                      isActive: true,
-                      color: Theme.of(context).primaryColor,
-                      label: 'Expenses',
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedCategory = categories[0];
+                        });
+                      },
+                      child: DashboardCategoryTab(
+                        isActive: selectedCategory == categories[0],
+                        label: 'Expenses',
+                      ),
                     ),
-                    DashboardCategoryTab(
-                      isActive: false,
-                      color: Colors.grey[50],
-                      label: 'Savings',
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedCategory = categories[1];
+                        });
+                      },
+                      child: DashboardCategoryTab(
+                        isActive: selectedCategory == categories[1],
+                        label: 'Savings',
+                      ),
                     ),
-                    DashboardCategoryTab(
-                      isActive: false,
-                      color: Colors.grey[50],
-                      label: 'Goals',
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedCategory = categories[2];
+                        });
+                      },
+                      child: DashboardCategoryTab(
+                        isActive: selectedCategory == categories[2],
+                        label: 'Goals',
+                      ),
                     )
                   ],
                 )

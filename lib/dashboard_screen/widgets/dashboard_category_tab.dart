@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 class DashboardCategoryTab extends StatelessWidget {
   final bool isActive;
   final String label;
-  final Color? color;
+
   const DashboardCategoryTab({
     super.key,
     required this.isActive,
     required this.label,
-    required this.color,
   });
 
   @override
