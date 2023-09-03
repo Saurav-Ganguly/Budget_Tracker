@@ -1,4 +1,6 @@
 import 'package:budget_tracker/providers/expenses_provider.dart';
+import 'package:budget_tracker/providers/goals_provider.dart';
+import 'package:budget_tracker/providers/savings_provider.dart';
 import 'package:budget_tracker/providers/transactions_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,8 +61,14 @@ class MyApp extends StatelessWidget {
       ),
       home: MultiProvider(
         providers: [
-          ChangeNotifierProvider<CategoriesProvider>(
-            create: (context) => CategoriesProvider(),
+          ChangeNotifierProvider<ExpensesProvider>(
+            create: (context) => ExpensesProvider(),
+          ),
+          ChangeNotifierProvider<SavingsProvider>(
+            create: (context) => SavingsProvider(),
+          ),
+          ChangeNotifierProvider<GoalsProvider>(
+            create: (context) => GoalsProvider(),
           ),
           ChangeNotifierProvider<TransactionsProvider>(
             create: (context) => TransactionsProvider(),

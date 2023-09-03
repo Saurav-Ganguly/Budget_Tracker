@@ -1,4 +1,6 @@
 import 'package:budget_tracker/dashboard_screen/widgets/category_card.dart';
+import 'package:budget_tracker/providers/goals_provider.dart';
+import 'package:budget_tracker/providers/savings_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,16 +16,14 @@ class CategoryMainArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final categoriesData = context.watch<CategoriesProvider>().categories;
-
     List<Map<String, dynamic>> getSelectedCategoryList() {
-      List<Map<String, dynamic>> selectedCategoryList = [];
-      for (var element in categoriesData) {
-        if (element["type"] == selectedCategory) {
-          selectedCategoryList.add(element);
-        }
+      if (selectedCategory == CategoryTypes.expenses) {
+        return context.watch<ExpensesProvider>().expenses;
+      } else if (selectedCategory == CategoryTypes.savings) {
+        return context.watch<SavingsProvider>().savings;
+      } else {
+        return context.watch<GoalsProvider>().goals;
       }
-      return selectedCategoryList;
     }
 
     Color getCategoryColor(CategoryTypes type) {
