@@ -7,16 +7,17 @@ class SavingsProvider extends ChangeNotifier {
     {
       "id": "1",
       "type": CategoryTypes.savings,
-      "title": "Fixed Deposit",
-      "icons": "",
-      "allocated_amount": 1500,
-    },
-    {
-      "id": "5",
-      "type": CategoryTypes.savings,
-      "title": "Mutual Funds",
+      "title": "Mutual Fund",
       "icons": "",
       "allocated_amount": 5000,
+      "transactions": [
+        {
+          "id": '1',
+          "amount": 3000,
+          "category": CategoryTypes.savings,
+          "date": "3/9/2023",
+        },
+      ]
     },
   ];
 

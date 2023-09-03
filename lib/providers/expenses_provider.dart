@@ -10,20 +10,14 @@ class ExpensesProvider extends ChangeNotifier {
       "title": "rent",
       "icons": "",
       "allocated_amount": 8500,
-    },
-    {
-      "id": "2",
-      "type": CategoryTypes.expenses,
-      "title": "grocery",
-      "icons": "",
-      "allocated_amount": 3000,
-    },
-    {
-      "id": "3",
-      "type": CategoryTypes.expenses,
-      "title": "self care",
-      "icons": "",
-      "allocated_amount": 3500,
+      "transactions": [
+        {
+          "id": '1',
+          "amount": 6500,
+          "category": CategoryTypes.expenses,
+          "date": "3/9/2023",
+        },
+      ]
     },
   ];
 
