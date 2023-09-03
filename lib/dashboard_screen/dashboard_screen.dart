@@ -1,6 +1,7 @@
+import 'package:budget_tracker/dashboard_screen/widgets/category_main_area.dart';
+import 'package:budget_tracker/global_vars.dart';
 import 'package:flutter/material.dart';
 
-import 'package:budget_tracker/dashboard_screen/widgets/category_card.dart';
 import 'package:budget_tracker/dashboard_screen/widgets/dashboard_category_tab.dart';
 import 'package:budget_tracker/dashboard_screen/widgets/dashboard_main_card.dart';
 
@@ -12,8 +13,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  final categories = ['Expenses', 'Savings', 'Goals'];
-  String selectedCategory = 'Expenses';
+  CategoryTypes selectedCategory = CategoryTypes.expenses;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,34 +55,36 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                selectedCategory = categories[0];
+                                selectedCategory = CategoryTypes.expenses;
                               });
                             },
                             child: DashboardCategoryTab(
-                              isActive: selectedCategory == categories[0],
-                              label: 'Expenses',
+                              isActive:
+                                  selectedCategory == CategoryTypes.expenses,
+                              label: CategoryTypes.expenses.name,
                             ),
                           ),
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                selectedCategory = categories[1];
+                                selectedCategory = CategoryTypes.savings;
                               });
                             },
                             child: DashboardCategoryTab(
-                              isActive: selectedCategory == categories[1],
-                              label: 'Savings',
+                              isActive:
+                                  selectedCategory == CategoryTypes.savings,
+                              label: CategoryTypes.savings.name,
                             ),
                           ),
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                selectedCategory = categories[2];
+                                selectedCategory = CategoryTypes.goals;
                               });
                             },
                             child: DashboardCategoryTab(
-                              isActive: selectedCategory == categories[2],
-                              label: 'Goals',
+                              isActive: selectedCategory == CategoryTypes.goals,
+                              label: CategoryTypes.goals.name,
                             ),
                           )
                         ],
@@ -90,23 +92,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ],
                   ),
                 ),
-                Expanded(
-                  child: Card(
-                    color: Theme.of(context).colorScheme.background,
-                    margin: const EdgeInsets.all(0),
-                    elevation: 0,
-                    child: ListView.builder(
-                      padding: const EdgeInsets.all(10),
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {},
-                          child: const CategoryCard(),
-                        );
-                      },
-                    ),
-                  ),
-                ),
+                CategoryMainArea(
+                  selectedCategory: selectedCategory,
+                )
               ],
             ),
           ),

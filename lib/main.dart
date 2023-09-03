@@ -1,8 +1,11 @@
-import 'package:budget_tracker/settings_screen/settings_screen.dart';
-import 'package:budget_tracker/transactions_screen/transactions_screen.dart';
+import 'package:budget_tracker/providers/expenses_provider.dart';
+import 'package:budget_tracker/providers/transactions_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
+import 'package:budget_tracker/settings_screen/settings_screen.dart';
+import 'package:budget_tracker/transactions_screen/transactions_screen.dart';
 import 'package:budget_tracker/dashboard_screen/dashboard_screen.dart';
 
 void main() {
@@ -21,13 +24,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-            background: const Color(0XFFF8F8F8),
-            tertiary: const Color.fromARGB(255, 63, 192, 177),
-            //generate primary secordary colors
-            seedColor: const Color.fromARGB(255, 31, 147, 248),
-            primary: const Color.fromARGB(255, 31, 147, 248),
-            onBackground: const Color(0XFF00CAAC),
-            onError: const Color(0XFFF8A69C)),
+          background: const Color(0XFFF8F8F8),
+          tertiary: const Color.fromARGB(255, 63, 192, 177),
+          //generate primary secordary colors
+          seedColor: const Color.fromARGB(255, 31, 147, 248),
+          primary: const Color.fromARGB(255, 31, 147, 248),
+          onBackground: const Color(0XFF00CAAC),
+        ),
         inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(
             fontWeight: FontWeight.bold,
@@ -54,7 +57,17 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const AppRoot(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<CategoriesProvider>(
+            create: (context) => CategoriesProvider(),
+          ),
+          ChangeNotifierProvider<TransactionsProvider>(
+            create: (context) => TransactionsProvider(),
+          ),
+        ],
+        child: const AppRoot(),
+      ),
     );
   }
 }

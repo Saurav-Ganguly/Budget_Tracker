@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({super.key});
+  final String title;
+  final int allocatedAmt;
+  final Color color;
+  const CategoryCard({
+    super.key,
+    required this.title,
+    required this.allocatedAmt,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,26 +21,26 @@ class CategoryCard extends StatelessWidget {
             vertical: 5,
             horizontal: 10,
           ),
-          iconColor: Theme.of(context).colorScheme.onError,
+          iconColor: color,
           leading: CircularPercentIndicator(
             radius: 25.0,
             percent: 0.5,
             center: const Icon(Icons.home),
-            progressColor: Theme.of(context).colorScheme.onError,
+            progressColor: color,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          title: const Text(
-            'Rent',
-            style: TextStyle(
+          title: Text(
+            title,
+            style: const TextStyle(
               fontSize: 20,
             ),
           ),
-          subtitle: const Text(
+          subtitle: Text(
             '- 8500',
             style: TextStyle(
-              color: Colors.red,
+              color: color,
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
@@ -44,23 +52,23 @@ class CategoryCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Material(
-                  color: Theme.of(context).colorScheme.onError,
+                  color: color,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Text(
+                        const Text(
                           'Allocated :',
                           style: TextStyle(
                             color: Colors.white,
                           ),
                         ),
                         Text(
-                          '8,500',
-                          style: TextStyle(
+                          allocatedAmt.toString(),
+                          style: const TextStyle(
                             fontSize: 18,
                             color: Colors.white,
                           ),

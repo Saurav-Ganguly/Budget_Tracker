@@ -38,7 +38,7 @@ dependencies:
   google_fonts: ^5.1.0
   line_icons: ^2.0.3
   percent_indicator: ^4.2.3
-  animated_bottom_navigation_bar: ^1.2.0
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
