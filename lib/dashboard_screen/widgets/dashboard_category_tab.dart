@@ -22,8 +22,8 @@ class DashboardCategoryTab extends StatelessWidget {
           ? Theme.of(context).colorScheme.primary.withAlpha(200)
           : Colors.white,
       padding: const EdgeInsets.symmetric(
-        horizontal: 13,
-        vertical: 13,
+        horizontal: 10,
+        vertical: 10,
       ),
       label: Text(
         label,
