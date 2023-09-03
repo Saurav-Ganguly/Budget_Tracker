@@ -13,21 +13,6 @@ class BudgetScreen extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        // floatingActionButton: FloatingActionButton.extended(
-        //   backgroundColor: Theme.of(context).primaryColor,
-        //   onPressed: () {},
-        //   label: Text(
-        //     'New ',
-        //     style: const TextStyle(
-        //       fontSize: 18,
-        //       color: Colors.white,
-        //     ),
-        //   ),
-        //   icon: const Icon(
-        //     Icons.add,
-        //     color: Colors.white,
-        //   ),
-        // ),
         appBar: AppBar(
           elevation: 10,
           backgroundColor: Theme.of(context).colorScheme.primary,

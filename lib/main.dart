@@ -2,6 +2,7 @@ import 'package:budget_tracker/providers/expenses_provider.dart';
 import 'package:budget_tracker/providers/goals_provider.dart';
 import 'package:budget_tracker/providers/savings_provider.dart';
 import 'package:budget_tracker/providers/transactions_provider.dart';
+import 'package:budget_tracker/trial.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

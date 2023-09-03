@@ -1,6 +1,8 @@
+import 'package:budget_tracker/budget_screen/widgets/add_item_dialog.dart';
 import 'package:budget_tracker/budget_screen/widgets/budget_settings_card.dart';
 import 'package:flutter/material.dart';
 import 'package:budget_tracker/providers/expenses_provider.dart';
+
 import 'package:provider/provider.dart';
 
 class ExpensesSetting extends StatelessWidget {
@@ -11,7 +13,47 @@ class ExpensesSetting extends StatelessWidget {
     final expenses = context.watch<ExpensesProvider>().expenses;
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          //show
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text(
+                  "Add a new Monthly Expense",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                content: const AddItemDialog(),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Submit',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          );
+        },
         label: const Text('New Expense'),
         icon: const Icon(Icons.add),
         backgroundColor: Theme.of(context).primaryColor,
