@@ -2,6 +2,7 @@ import 'package:budget_tracker/providers/expenses_provider.dart';
 import 'package:budget_tracker/providers/goals_provider.dart';
 import 'package:budget_tracker/providers/savings_provider.dart';
 import 'package:budget_tracker/providers/transactions_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -91,21 +92,13 @@ class _AppRootState extends State<AppRoot> {
   var currentScreen = 1;
 
   List<Widget> screens = const [
-    SettingsScreen(),
+    BudgetScreen(),
     DashboardScreen(),
     TransactionsScreen(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).primaryColor,
-        onPressed: () {},
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-      ),
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 35,
         selectedFontSize: 10,
