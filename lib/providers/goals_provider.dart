@@ -10,6 +10,8 @@ class GoalsProvider extends ChangeNotifier {
       "title": "Car",
       "icons": "",
       "allocated_amount": 800000,
+      "monthly_allocation": 10000,
+      "time": "10 years",
       "transactions": [
         {
           "id": '2',

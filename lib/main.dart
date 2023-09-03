@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'package:budget_tracker/settings_screen/settings_screen.dart';
+import 'package:budget_tracker/budget_screen/budget_screen.dart';
 import 'package:budget_tracker/transactions_screen/transactions_screen.dart';
 import 'package:budget_tracker/dashboard_screen/dashboard_screen.dart';
 
@@ -108,8 +108,8 @@ class _AppRootState extends State<AppRoot> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 35,
-        selectedFontSize: 0,
-        unselectedFontSize: 0,
+        selectedFontSize: 10,
+        unselectedFontSize: 10,
         currentIndex: currentScreen,
         onTap: (value) {
           setState(() {
@@ -118,19 +118,19 @@ class _AppRootState extends State<AppRoot> {
         },
         items: const [
           BottomNavigationBarItem(
-            label: '',
+            label: 'Budget',
             icon: Icon(
-              Icons.settings,
+              Icons.pie_chart,
             ),
           ),
           BottomNavigationBarItem(
-            label: '',
+            label: 'Dashboard',
             icon: Icon(
               Icons.home,
             ),
           ),
           BottomNavigationBarItem(
-            label: '',
+            label: 'Transactions',
             icon: Icon(
               Icons.history,
             ),
