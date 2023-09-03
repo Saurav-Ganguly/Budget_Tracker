@@ -1,3 +1,5 @@
+import 'package:budget_tracker/settings_screen/settings_screen.dart';
+import 'package:budget_tracker/transactions_screen/transactions_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -52,7 +54,69 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const Dashboard(),
+      home: const AppRoot(),
+    );
+  }
+}
+
+class AppRoot extends StatefulWidget {
+  const AppRoot({super.key});
+
+  @override
+  State<AppRoot> createState() => _AppRootState();
+}
+
+class _AppRootState extends State<AppRoot> {
+  var currentScreen = 1;
+
+  List<Widget> screens = const [
+    SettingsScreen(),
+    DashboardScreen(),
+    TransactionsScreen(),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: () {},
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        iconSize: 35,
+        selectedFontSize: 0,
+        unselectedFontSize: 0,
+        currentIndex: currentScreen,
+        onTap: (value) {
+          setState(() {
+            currentScreen = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            label: '',
+            icon: Icon(
+              Icons.settings,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: '',
+            icon: Icon(
+              Icons.home,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: '',
+            icon: Icon(
+              Icons.history,
+            ),
+          ),
+        ],
+      ),
+      body: screens[currentScreen],
     );
   }
 }
