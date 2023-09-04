@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 //storehouse of our data
 class DataProvider extends ChangeNotifier {
   //monthly income
-  int? income;
+  int income = 0;
 
   //monthly expenses
   final List<Map<String, dynamic>> expenses = [
