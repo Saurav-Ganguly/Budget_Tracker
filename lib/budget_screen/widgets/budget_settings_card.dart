@@ -1,13 +1,15 @@
+import 'package:budget_tracker/widgets/edit_category_dialog.dart';
 import 'package:flutter/material.dart';
 
 class BudgetSettingsCard extends StatelessWidget {
   final void Function(Map<String, dynamic>) removeItem;
+  final void Function(String, Map<String, dynamic>) editItem;
   final Map<String, dynamic> data;
-  const BudgetSettingsCard({
-    super.key,
-    required this.data,
-    required this.removeItem,
-  });
+  const BudgetSettingsCard(
+      {super.key,
+      required this.data,
+      required this.removeItem,
+      required this.editItem});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,20 @@ class BudgetSettingsCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    //dialog box to add a entry
+                    return EditCategoryDialog(
+                      category: data['type'],
+                      data: data,
+                      editItem: editItem,
+                      selectedId: data['id'],
+                    );
+                  },
+                );
+              },
               icon: const Icon(Icons.edit),
               color: Theme.of(context).colorScheme.primary,
               splashRadius: 10,

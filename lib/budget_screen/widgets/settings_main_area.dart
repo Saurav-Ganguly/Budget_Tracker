@@ -35,6 +35,18 @@ class SettingsMainArea extends StatelessWidget {
           .removeItem(item: data, category: selectedCategory);
     }
 
+    //edits a category
+    void editCategory(
+      String id,
+      Map<String, dynamic> newData,
+    ) {
+      context.read<DataProvider>().editItem(
+            id: id,
+            newItem: newData,
+            category: selectedCategory,
+          );
+    }
+
     List<Map<String, dynamic>> getData() {
       List<Map<String, dynamic>> data = [];
       if (selectedCategory == CategoryTypes.expenses) {
@@ -79,6 +91,7 @@ class SettingsMainArea extends StatelessWidget {
                   return BudgetSettingsCard(
                     data: item,
                     removeItem: removeCategory,
+                    editItem: editCategory,
                   );
                 },
               ),

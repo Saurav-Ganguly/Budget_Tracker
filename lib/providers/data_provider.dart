@@ -97,4 +97,34 @@ class DataProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  //edit an item
+  void editItem({
+    //id of the element you wanna edit
+    required String id,
+    //new item to be added
+    required Map<String, dynamic> newItem,
+    required CategoryTypes category,
+  }) {
+    if (category == CategoryTypes.expenses) {
+      for (final (index, element) in expenses.indexed) {
+        if (element['id'] == id) {
+          expenses[index] = newItem;
+        }
+      }
+    } else if (category == CategoryTypes.savings) {
+      for (final (index, element) in savings.indexed) {
+        if (element['id'] == id) {
+          savings[index] = newItem;
+        }
+      }
+    } else if (category == CategoryTypes.goals) {
+      for (final (index, element) in goals.indexed) {
+        if (element['id'] == id) {
+          goals[index] = newItem;
+        }
+      }
+    }
+    notifyListeners();
+  }
 }
