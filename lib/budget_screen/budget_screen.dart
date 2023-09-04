@@ -1,15 +1,19 @@
-import 'package:budget_tracker/budget_screen/widgets/expense_setting.dart';
-import 'package:budget_tracker/budget_screen/widgets/goal_setting.dart';
-import 'package:budget_tracker/budget_screen/widgets/saving_setting.dart';
-
+//flutter package
+import 'package:budget_tracker/budget_screen/widgets/settings_main_area.dart';
+import 'package:budget_tracker/global_vars.dart';
 import 'package:flutter/material.dart';
+
+//external libraries
 import 'package:line_icons/line_icons.dart';
+
+//file imports
 
 class BudgetScreen extends StatelessWidget {
   const BudgetScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    //top tab bar
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -57,9 +61,9 @@ class BudgetScreen extends StatelessWidget {
         ),
         body: const TabBarView(
           children: [
-            ExpensesSetting(),
-            SavingsSetting(),
-            GoalsSetting(),
+            SettingsMainArea(selectedCategory: CategoryTypes.expenses),
+            SettingsMainArea(selectedCategory: CategoryTypes.savings),
+            SettingsMainArea(selectedCategory: CategoryTypes.goals),
           ],
         ),
       ),

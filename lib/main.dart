@@ -1,13 +1,17 @@
-import 'package:budget_tracker/providers/expenses_provider.dart';
-import 'package:budget_tracker/providers/goals_provider.dart';
-import 'package:budget_tracker/providers/savings_provider.dart';
-import 'package:budget_tracker/providers/transactions_provider.dart';
-import 'package:budget_tracker/trial.dart';
+//flutter packages
 
 import 'package:flutter/material.dart';
+
+//external libraries
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+//providers
+import 'package:budget_tracker/providers/data_provider.dart';
+
+import 'package:budget_tracker/providers/transactions_provider.dart';
+
+//file imports
 import 'package:budget_tracker/budget_screen/budget_screen.dart';
 import 'package:budget_tracker/transactions_screen/transactions_screen.dart';
 import 'package:budget_tracker/dashboard_screen/dashboard_screen.dart';
@@ -26,15 +30,21 @@ class MyApp extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      //theme defination
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
+          // TODO: Make the theme color scheme better
+          //background color
           background: const Color(0XFFF8F8F8),
+          //tertiary color - used to generate gradient on dashboard
           tertiary: const Color.fromARGB(255, 63, 192, 177),
-          //generate primary secordary colors
+          //generate primary & seed color is same
           seedColor: const Color.fromARGB(255, 31, 147, 248),
           primary: const Color.fromARGB(255, 31, 147, 248),
+          //goal color
           onBackground: const Color(0XFF00CAAC),
         ),
+        // input text field theme
         inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(
             fontWeight: FontWeight.bold,
@@ -42,6 +52,7 @@ class MyApp extends StatelessWidget {
           ),
           prefixIconColor: Color.fromRGBO(119, 119, 119, 1),
         ),
+        // text theme
         textTheme: GoogleFonts.latoTextTheme(textTheme).copyWith(
           titleLarge: const TextStyle(
             fontWeight: FontWeight.bold,
@@ -61,17 +72,14 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
+      // all the providers
       home: MultiProvider(
         providers: [
-          ChangeNotifierProvider<ExpensesProvider>(
-            create: (context) => ExpensesProvider(),
+          // for expenses
+          ChangeNotifierProvider<DataProvider>(
+            create: (context) => DataProvider(),
           ),
-          ChangeNotifierProvider<SavingsProvider>(
-            create: (context) => SavingsProvider(),
-          ),
-          ChangeNotifierProvider<GoalsProvider>(
-            create: (context) => GoalsProvider(),
-          ),
+          // for transactions
           ChangeNotifierProvider<TransactionsProvider>(
             create: (context) => TransactionsProvider(),
           ),
@@ -82,6 +90,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//root widget for handling the switch between all the pages of the app
 class AppRoot extends StatefulWidget {
   const AppRoot({super.key});
 
@@ -90,16 +99,20 @@ class AppRoot extends StatefulWidget {
 }
 
 class _AppRootState extends State<AppRoot> {
+  //at initialization the current screen is set to the dashboard
   var currentScreen = 1;
 
+  //screens (3)
   List<Widget> screens = const [
     BudgetScreen(),
     DashboardScreen(),
     TransactionsScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //bottom navigation bar - for page switch
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 35,
         selectedFontSize: 10,

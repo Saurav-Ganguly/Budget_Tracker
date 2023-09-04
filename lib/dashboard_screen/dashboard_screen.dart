@@ -1,19 +1,13 @@
-import 'package:budget_tracker/dashboard_screen/widgets/category_main_area.dart';
-import 'package:budget_tracker/global_vars.dart';
+//flutter package
 import 'package:flutter/material.dart';
 
-import 'package:budget_tracker/dashboard_screen/widgets/dashboard_category_tab.dart';
+//file imports
 import 'package:budget_tracker/dashboard_screen/widgets/dashboard_main_card.dart';
+import 'package:budget_tracker/dashboard_screen/widgets/category_area/category_area.dart';
 
-class DashboardScreen extends StatefulWidget {
+class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
-  @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
-}
-
-class _DashboardScreenState extends State<DashboardScreen> {
-  CategoryTypes selectedCategory = CategoryTypes.expenses;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,90 +19,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
           color: Colors.white,
         ),
       ),
-      body: Column(
+      body: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //main Card
-          const DashboardMainCard(
+          //Main card
+          //Main top designed card on dashboard
+          DashboardMainCard(
             name: 'Saurav',
             month: 'September',
+            // TODO: add all the inputs to the card : Income, Savings and Expenses
           ),
           //categories tab
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 10,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 10,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Categories',
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  selectedCategory = CategoryTypes.expenses;
-                                });
-                              },
-                              child: DashboardCategoryTab(
-                                isActive:
-                                    selectedCategory == CategoryTypes.expenses,
-                                label: CategoryTypes.expenses.name,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  selectedCategory = CategoryTypes.savings;
-                                });
-                              },
-                              child: DashboardCategoryTab(
-                                isActive:
-                                    selectedCategory == CategoryTypes.savings,
-                                label: CategoryTypes.savings.name,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  selectedCategory = CategoryTypes.goals;
-                                });
-                              },
-                              child: DashboardCategoryTab(
-                                isActive:
-                                    selectedCategory == CategoryTypes.goals,
-                                label: CategoryTypes.goals.name,
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  CategoryMainArea(
-                    selectedCategory: selectedCategory,
-                  )
-                ],
-              ),
-            ),
-          )
+          // the area showing the categories tab and the category card
+          CategoryArea(),
         ],
       ),
     );

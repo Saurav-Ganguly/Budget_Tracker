@@ -1,4 +1,7 @@
+//flutter package
 import 'package:flutter/material.dart';
+
+//external libraries
 import 'package:percent_indicator/percent_indicator.dart';
 
 class CategoryCard extends StatelessWidget {

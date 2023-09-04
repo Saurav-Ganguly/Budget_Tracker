@@ -1,10 +1,16 @@
-import 'package:budget_tracker/dashboard_screen/widgets/dashboard_main_card_data_chips.dart';
+//flutter package
 import 'package:flutter/material.dart';
+
+//external libraries
 import 'package:line_icons/line_icons.dart';
+
+//file imports
+import 'package:budget_tracker/dashboard_screen/widgets/dashboard_main_card_data_chips.dart';
 
 class DashboardMainCard extends StatelessWidget {
   final String month;
   final String name;
+  // TODO: add all the final fields i.e. income, saving & expenses
   const DashboardMainCard({
     super.key,
     required this.month,
@@ -13,7 +19,7 @@ class DashboardMainCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //border
+    //border of the card
     const borderRadiusTopCard = BorderRadius.only(
       bottomLeft: Radius.circular(50),
       bottomRight: Radius.circular(50),
@@ -66,17 +72,17 @@ class DashboardMainCard extends StatelessWidget {
                         DashboardMainCardDataChips(
                           icon: LineIcons.indianRupeeSign,
                           label: 'Income',
-                          amount: '50,000',
+                          amount: '50,000', //TODO: add income
                         ),
                         DashboardMainCardDataChips(
                           icon: LineIcons.piggyBank,
                           label: 'Savings',
-                          amount: '20,000',
+                          amount: '20,000', //TODO: add saving
                         ),
                         DashboardMainCardDataChips(
                           icon: LineIcons.wavyMoneyBill,
                           label: 'Expenses',
-                          amount: '20,000',
+                          amount: '20,000', //TODO: add expenses
                         ),
                       ],
                     ),
@@ -91,7 +97,7 @@ class DashboardMainCard extends StatelessWidget {
                         ),
                   ),
                   Text(
-                    'Rs 20,000',
+                    'Rs 20,000', //TODO: calculate balance
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Colors.white,
                         ),
