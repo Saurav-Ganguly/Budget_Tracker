@@ -14,13 +14,18 @@ class BudgetSettingsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const CircleAvatar(
-        radius: 30,
+      leading: CircleAvatar(
+        radius: 20,
         child: Icon(
-          Icons.home,
+          data['icons'],
         ),
       ),
-      title: Text(data["title"]),
+      title: Text(
+        data["title"],
+        style: const TextStyle(
+          fontSize: 20,
+        ),
+      ),
       subtitle: Text(
         "Rs. ${data["allocated_amount"]} / month",
         style: Theme.of(context).textTheme.bodySmall,

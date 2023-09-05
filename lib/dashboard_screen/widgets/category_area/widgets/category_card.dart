@@ -7,11 +7,13 @@ import 'package:percent_indicator/percent_indicator.dart';
 class CategoryCard extends StatelessWidget {
   final String title;
   final int allocatedAmt;
+  final IconData icon;
   final Color color;
   const CategoryCard({
     super.key,
     required this.title,
     required this.allocatedAmt,
+    required this.icon,
     required this.color,
   });
 
@@ -28,7 +30,7 @@ class CategoryCard extends StatelessWidget {
           leading: CircularPercentIndicator(
             radius: 25.0,
             percent: 0.5,
-            center: const Icon(Icons.home),
+            center: Icon(icon),
             progressColor: color,
           ),
           shape: RoundedRectangleBorder(

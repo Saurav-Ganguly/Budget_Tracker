@@ -1,6 +1,7 @@
 //flutter package
 import 'package:budget_tracker/budget_screen/widgets/settings_main_area.dart';
 import 'package:budget_tracker/global_vars.dart';
+import 'package:budget_tracker/widgets/income_dialog.dart';
 import 'package:flutter/material.dart';
 
 //external libraries
@@ -16,6 +17,8 @@ class BudgetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final income = context.watch<DataProvider>().income;
+    final setIncome = context.read<DataProvider>().setIncome;
+    final addIncome = context.read<DataProvider>().addIncome;
     //top tab bar
     return Scaffold(
         body: SafeArea(
@@ -49,7 +52,18 @@ class BudgetScreen extends StatelessWidget {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                //dialog box to add a entry
+                                return IncomeDialog(
+                                  setIncome: setIncome,
+                                  addFlag: false,
+                                );
+                              },
+                            );
+                          },
                           icon: const Icon(
                             Icons.edit,
                             color: Colors.white,
@@ -81,7 +95,18 @@ class BudgetScreen extends StatelessWidget {
                     ),
                     Center(
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              //dialog box to add a entry
+                              return IncomeDialog(
+                                setIncome: addIncome,
+                                addFlag: true,
+                              );
+                            },
+                          );
+                        },
                         child: const Text(
                           "Add to income",
                           style: TextStyle(
@@ -144,15 +169,6 @@ class BudgetScreen extends StatelessWidget {
               ),
             ],
           ),
-          // title: const Padding(
-          //   padding: EdgeInsets.only(top: 15.0),
-          //   child: Text(
-          //     'Set Monthly Budget',
-          //     style: TextStyle(
-          //       fontSize: 25,
-          //     ),
-          //   ),
-          // ),
         ),
         body: const TabBarView(
           children: [

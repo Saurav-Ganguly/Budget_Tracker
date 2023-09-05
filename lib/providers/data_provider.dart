@@ -1,5 +1,4 @@
 import 'package:budget_tracker/global_vars.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 //storehouse of our data
@@ -13,7 +12,7 @@ class DataProvider extends ChangeNotifier {
       "id": "1",
       "type": CategoryTypes.expenses,
       "title": "rent",
-      "icons": "",
+      "icons": Icons.check,
       "allocated_amount": 8500,
       "transactions": [
         {
@@ -32,7 +31,7 @@ class DataProvider extends ChangeNotifier {
       "id": "1",
       "type": CategoryTypes.savings,
       "title": "Mutual Fund",
-      "icons": "",
+      "icons": Icons.check,
       "allocated_amount": 5000,
       "transactions": [
         {
@@ -51,7 +50,7 @@ class DataProvider extends ChangeNotifier {
       "id": "1",
       "type": CategoryTypes.goals,
       "title": "Car",
-      "icons": "",
+      "icons": Icons.check,
       "allocated_amount": 800000,
       "monthly_allocation": 10000,
       "time": "10 years",
@@ -66,11 +65,24 @@ class DataProvider extends ChangeNotifier {
     },
   ];
 
+  //set income
+  void setIncome(int value) {
+    income = value;
+    notifyListeners();
+  }
+
+  //add to income
+  void addIncome(int value) {
+    income += value;
+    notifyListeners();
+  }
+
   //add new item
   void addItem({
     required Map<String, dynamic> item,
     required CategoryTypes category,
   }) {
+    print(item);
     if (category == CategoryTypes.expenses) {
       expenses.add(item);
     } else if (category == CategoryTypes.savings) {

@@ -132,6 +132,7 @@ class _CategoryAreaState extends State<CategoryArea> {
                       onTap: () {},
                       child: CategoryCard(
                         color: getCategoryColor(selectedCategory),
+                        icon: categoryItem['icons'],
                         title: categoryItem['title'],
                         allocatedAmt: categoryItem['allocated_amount'],
                       ),
